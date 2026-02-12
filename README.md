@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="id"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>🧧 Angpao Imlek 🧧</title>
+
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100svh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow-x: hidden;
+  user-select: none;
+  color: #070707;
+  text-shadow: 0 0 10px #fffcfd;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* BACKGROUND */
+#background-layer {
+  position: fixed;
+  inset: 0;
+  background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgomPNZ205vy2MXnDOGcH7FcCIZ8HnE8AFaEunSKZlzI02qo7Cpk957BgaPzpUxHGldsfOHBuHh1P3UNBbxU_dHpdRcxduiWEcchdhyphenhyphen36LA1DgBAJ-0PL-BPrdffbb-D7WNtBnJEVBJ6dDEgFPK_M9hTJ9xlvAFWYKHwzABMWWPeLgB2_uMPsBllVZ2t9g/s1600/images%20(1).jpg');
+  background-size: cover;
+  background-position: center top;
+  z-index: -10;
+}
+#background-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.25);
+  backdrop-filter: blur(3px);
+  z-index: -5;
+}
+
+/* HUJAN ANGPAO */
+#angpao-rain {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -4;
+}
+.angpao {
+  position: absolute;
+  top: -50px;
+  font-size: 32px;
+  animation: fall linear infinite;
+}
+@keyframes fall {
+  to { transform: translateY(110vh) rotate(360deg); }
+}
+
+/* UI */
+h1 {
+  font-size: clamp(1.2rem, 4vw, 2rem);
+  margin-bottom: 12px;
+  text-align: center;
+  white-space: nowrap;
+}
+h2 { margin-bottom: 10px; }
+input {
+  padding: 12px 18px;
+  font-size: 16px;
+  border-radius: 12px;
+  border: none;
+  margin-bottom: 20px;
+  width: 250px;
+}
+button {
+  background: linear-gradient(45deg, #ff0909, #fda085);
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 15px;
+  padding: 14px 36px;
+  cursor: pointer;
+  box-shadow: 0 0 20px #df5353;
+  margin-bottom: 20px;
+}
+button:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* BOX */
+#box {
+  width: 220px;
+  height: 220px;
+  border-radius: 25px;
+  background: linear-gradient(135deg, #ffb347, #ffcc33);
+  box-shadow: 0 0 25px #ffcc33;
+  font-size: 72px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#box.spinning { animation: spin 2s ease-in-out forwards; }
+@keyframes spin { 50% { transform: rotateY(720deg) scale(1.2); } 100% { transform: rotateY(1080deg); } }
+
+/* POPUP */
+#popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+.popup-content {
+  background: linear-gradient(180deg, #ff0000, #b30000);
+  padding: 25px;
+  border-radius: 15px;
+  color: white;
+  text-align: center;
+}
+.amount { font-size: 2rem; font-weight: 900; color: gold; }
+
+/* HISTORY */
+#history {
+  width:90%; max-width:420px; background:rgba(255,255,255,0.85);
+  border-radius:12px; padding:15px; max-height:260px; overflow:auto; margin-top:15px;
+}
+#history h3 { margin-top:0; text-align:center; }
+#historyList li { padding:4px 0; border-bottom:1px dashed #ccc; font-size:13px; }
+</style>
+</head>
+
+<body>
+
+<div id="background-layer"></div>
+<div id="background-overlay"></div>
+<div id="angpao-rain"><div class="angpao" style="left: 92.458vw; animation-duration: 7.78451s;">🧧</div><div class="angpao" style="left: 65.944vw; animation-duration: 9.68109s;">🧧</div><div class="angpao" style="left: 30.7154vw; animation-duration: 10.6784s;">🧧</div><div class="angpao" style="left: 8.08246vw; animation-duration: 9.21013s;">🧧</div><div class="angpao" style="left: 11.381vw; animation-duration: 10.8017s;">🧧</div><div class="angpao" style="left: 20.2317vw; animation-duration: 6.80152s;">🧧</div><div class="angpao" style="left: 3.51898vw; animation-duration: 8.47751s;">🧧</div><div class="angpao" style="left: 45.7375vw; animation-duration: 9.56008s;">🧧</div><div class="angpao" style="left: 62.657vw; animation-duration: 11.0274s;">🧧</div><div class="angpao" style="left: 99.1532vw; animation-duration: 11.5167s;">🧧</div><div class="angpao" style="left: 55.4279vw; animation-duration: 6.68276s;">🧧</div><div class="angpao" style="left: 56.7737vw; animation-duration: 10.4131s;">🧧</div><div class="angpao" style="left: 82.1405vw; animation-duration: 9.60147s;">🧧</div><div class="angpao" style="left: 2.63003vw; animation-duration: 11.6764s;">🧧</div><div class="angpao" style="left: 94.2173vw; animation-duration: 11.6328s;">🧧</div><div class="angpao" style="left: 52.2839vw; animation-duration: 6.22438s;">🧧</div><div class="angpao" style="left: 83.5455vw; animation-duration: 8.26512s;">🧧</div><div class="angpao" style="left: 48.5192vw; animation-duration: 8.18105s;">🧧</div><div class="angpao" style="left: 23.8565vw; animation-duration: 10.9118s;">🧧</div><div class="angpao" style="left: 74.6453vw; animation-duration: 10.3276s;">🧧</div><div class="angpao" style="left: 46.5762vw; animation-duration: 10.7781s;">🧧</div><div class="angpao" style="left: 46.5206vw; animation-duration: 6.21714s;">🧧</div><div class="angpao" style="left: 67.482vw; animation-duration: 9.33514s;">🧧</div><div class="angpao" style="left: 62.4842vw; animation-duration: 7.21291s;">🧧</div></div>
+
+<h1>🧧 Angpao Imlek 🧧</h1>
+<h2>Masukkan USER ID</h2>
+
+<input id="userId" placeholder="Masukkan USER ID">
+<button id="startBtn">Klik untuk membuka ANGPAO 🧧</button>
+<button id="spinBtn" style="display:none;">BUKA ANGPAO</button>
+
+<div id="box">❓</div>
+
+<div id="popup">
+  <div class="popup-content">
+    <h2>SELAMAT!</h2>
+    <p>Anda mendapatkan ANGPAO sebesar</p>
+    <p class="amount" id="prizeAmount">IDR 0</p>
+    <p>Silahkan hubungi CS untuk klaim hadiah anda dengan screenshot ini.</p>
+    <button onclick="window.open('https://pintarbol.com/')">KLAIM SEKARANG</button>
+  </div>
+</div>
+
+<div id="history">
+  <h3>📜 50 Riwayat Spin Terakhir</h3>
+  <ul id="historyList"><li>🧧 <b>T****P</b> mendapatkan <b>IDR 500.000</b></li><li>🧧 <b>O****5</b> mendapatkan <b>IDR 500.000</b></li><li>🧧 <b>Z****6</b> mendapatkan <b>IDR 250.000</b></li><li>🧧 <b>L****U</b> mendapatkan <b>IDR 500.000</b></li><li>🧧 <b>A****D</b> mendapatkan <b>IDR 250.000</b></li><li>🧧 <b>T****8</b> mendapatkan <b>IDR 250.000</b></li><li>🧧 <b>E****5</b> mendapatkan <b>IDR 1.000.000</b></li><li>🧧 <b>F****I</b> mendapatkan <b>IDR 250.000</b></li><li>🧧 <b>Q****V</b> mendapatkan <b>IDR 500.000</b></li><li>🧧 <b>K****Z</b> mendapatkan <b>IDR 2.000.000</b></li><li>🧧 <b>N****A</b> mendapatkan <b>IDR 2.000.000</b></li><li>🧧 <b>6****7</b> mendapatkan <b>IDR 2.000.000</b></li><li>🧧 <b>S****7</b> mendapatkan <b>IDR 250.000</b></li><li>🧧 <b>K****0</b> mendapatkan <b>IDR 750.000</b></li><li>🧧 <b>L****O</b> mendapatkan <b>IDR 2.000.000</b></li><li>🧧 <b>7****T</b> mendapatkan <b>IDR 250.000</b></li><li>🧧 <b>3****0</b> mendapatkan <b>IDR 750.000</b></li><li>🧧 <b>2****M</b> mendapatkan <b>IDR 500.000</b></li><li>🧧 <b>Z****E</b> mendapatkan <b>IDR 2.000.000</b></li><li>🧧 <b>E****6</b> mendapatkan <b>IDR 2.000.000</b></li><li>🧧 <b>Z****D</b> mendapatkan <b>IDR 250.000</b></li><li>🧧 <b>D****8</b> mendapatkan <b>IDR 750.000</b></li><li>🧧 <b>M****7</b> mendapatkan <b>IDR 250.000</b></li><li>🧧 <b>A****I</b> mendapatkan <b>IDR 250.000</b></li><li>🧧 <b>K****Z</b> mendapatkan <b>IDR 250.000</b></li><li>🧧 <b>T****2</b> mendapatkan <b>IDR 1.000.000</b></li><li>🧧 <b>C****O</b> mendapatkan <b>IDR 250.000</b></li><li>🧧 <b>F****Q</b> mendapatkan <b>IDR 2.000.000</b></li><li>🧧 <b>Q****Y</b> mendapatkan <b>IDR 500.000</b></li><li>🧧 <b>T****Z</b> mendapatkan <b>IDR 500.000</b></li><li>🧧 <b>G****6</b> mendapatkan <b>IDR 250.000</b></li><li>🧧 <b>H****U</b> mendapatkan <b>IDR 750.000</b></li><li>🧧 <b>F****F</b> mendapatkan <b>IDR 250.000</b></li><li>🧧 <b>F****Q</b> mendapatkan <b>IDR 2.000.000</b></li><li>🧧 <b>P****H</b> mendapatkan <b>IDR 250.000</b></li><li>🧧 <b>S****X</b> mendapatkan <b>IDR 1.000.000</b></li><li>🧧 <b>U****O</b> mendapatkan <b>IDR 500.000</b></li><li>🧧 <b>D****L</b> mendapatkan <b>IDR 250.000</b></li><li>🧧 <b>6****B</b> mendapatkan <b>IDR 250.000</b></li><li>🧧 <b>0****K</b> mendapatkan <b>IDR 750.000</b></li><li>🧧 <b>2****T</b> mendapatkan <b>IDR 250.000</b></li><li>🧧 <b>I****6</b> mendapatkan <b>IDR 250.000</b></li><li>🧧 <b>A****6</b> mendapatkan <b>IDR 500.000</b></li><li>🧧 <b>N****U</b> mendapatkan <b>IDR 1.000.000</b></li><li>🧧 <b>W****7</b> mendapatkan <b>IDR 750.000</b></li><li>🧧 <b>I****I</b> mendapatkan <b>IDR 1.000.000</b></li><li>🧧 <b>N****9</b> mendapatkan <b>IDR 1.000.000</b></li><li>🧧 <b>A****3</b> mendapatkan <b>IDR 750.000</b></li><li>🧧 <b>1****G</b> mendapatkan <b>IDR 2.000.000</b></li><li>🧧 <b>4****7</b> mendapatkan <b>IDR 500.000</b></li></ul>
+</div>
+
+<audio id="spinSound" src="https://assets.mixkit.co/active_storage/sfx/2766/2766-preview.mp3"></audio>
+<audio id="winSound" src="https://assets.mixkit.co/active_storage/sfx/2019/2019-preview.mp3"></audio>
+<audio id="bgMusic" src="file:///C:/Users/User/Downloads/play_audio.html" loop=""></audio>
+
+<script>
+const startBtn = document.getElementById('startBtn');
+const spinBtn = document.getElementById('spinBtn');
+const box = document.getElementById('box');
+const popup = document.getElementById('popup');
+const prizeAmount = document.getElementById('prizeAmount');
+const userId = document.getElementById('userId');
+
+const spinSound = document.getElementById('spinSound');
+const winSound = document.getElementById('winSound');
+const bgMusic = document.getElementById('bgMusic');
+
+/* LOCK 1x SPIN */
+const USED_KEY = 'angpao_used';
+if (localStorage.getItem(USED_KEY)) {
+  startBtn.disabled = true;
+  startBtn.innerText = "ANGPAO SUDAH DIGUNAKAN";
+}
+
+/* MUSIC */
+document.addEventListener('click', () => {
+  bgMusic.volume = 0.8;
+  bgMusic.play().catch(()=>{});
+}, { once:true });
+
+/* HADIAH */
+const prizes = [
+  { amount: 250000, chance: 0.35 },
+  { amount: 500000, chance: 0.25 },
+  { amount: 750000, chance: 0.18 },
+  { amount: 1000000, chance: 0.15 },
+  { amount: 2000000, chance: 0.07 }
+];
+function drawPrize(){
+  let r=Math.random(), t=0;
+  for (let p of prizes){ t+=p.chance; if(r<t) return p.amount; }
+}
+
+/* RIWAYAT SPIN */
+const historyList = document.getElementById('historyList');
+const HISTORY_KEY = 'spin_history_';
+const todayKey = HISTORY_KEY + new Date().toISOString().slice(0,10);
+const prizeAmounts = prizes.map(p => p.amount);
+
+/* Masking: hanya huruf tengah disensor */
+function maskUser(user) {
+  if (user.length <= 2) return user[0] + '*';
+  return user[0] + '*'.repeat(user.length-2) + user[user.length-1];
+}
+
+/* Nama random sepenuhnya */
+function randomUser() {
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  let name = '';
+  for (let i = 0; i < 6; i++) {
+    name += chars[Math.floor(Math.random() * chars.length)];
+  }
+  return name;
+}
+
+/* Generate riwayat default */
+function generateHistory() {
+  const data = [];
+  for (let i = 0; i < 50; i++) {
+    data.push({
+      user: randomUser(),
+      amount: prizeAmounts[Math.floor(Math.random() * prizeAmounts.length)]
+    });
+  }
+  return data;
+}
+
+/* Load / buat riwayat */
+let historyData = JSON.parse(localStorage.getItem(todayKey));
+if (!historyData) {
+  historyData = generateHistory();
+  localStorage.setItem(todayKey, JSON.stringify(historyData));
+}
+
+/* Render riwayat */
+function renderHistory() {
+  historyList.innerHTML = '';
+  historyData.forEach(item => {
+    historyList.innerHTML += `<li>🧧 <b>${maskUser(item.user)}</b> mendapatkan <b>IDR ${item.amount.toLocaleString('id-ID')}</b></li>`;
+  });
+}
+renderHistory();
+
+/* START */
+startBtn.onclick = () => {
+  if (localStorage.getItem(USED_KEY)) {
+    alert("Angpao hanya bisa dibuka 1 kali di browser ini.");
+    return;
+  }
+  if (!userId.value.trim()) {
+    alert("USER ID wajib diisi!");
+    return;
+  }
+  startBtn.style.display = 'none';
+  spinBtn.style.display = 'inline-block';
+};
+
+/* SPIN */
+spinBtn.onclick = () => {
+  spinBtn.disabled = true;
+  spinSound.play().catch(()=>{});
+  box.classList.add('spinning');
+  box.textContent = '🧧';
+
+  setTimeout(() => {
+    const prize = drawPrize();
+    box.classList.remove('spinning');
+    box.textContent = '💰';
+    winSound.play().catch(()=>{});
+    prizeAmount.textContent = "IDR " + prize.toLocaleString('id-ID');
+    popup.style.display = 'flex';
+    localStorage.setItem(USED_KEY, 'true');
+
+    // Simpan user ID yang dimasukkan sebagai random nama
+    let inputName = '';
+    const inputVal = userId.value.trim();
+    for (let i = 0; i < inputVal.length; i++) {
+      inputName += inputVal[i];
+    }
+
+    historyData.unshift({
+      user: inputVal,
+      amount: prize
+    });
+
+    if (historyData.length > 50) historyData.pop();
+    localStorage.setItem(todayKey, JSON.stringify(historyData));
+    renderHistory();
+  }, 2000);
+};
+
+/* HUJAN ANGPAO */
+const rain = document.getElementById('angpao-rain');
+setInterval(() => {
+  const a = document.createElement('div');
+  a.className = 'angpao';
+  a.textContent = '🧧';
+  a.style.left = Math.random()*100+'vw';
+  a.style.animationDuration = (6+Math.random()*6)+'s';
+  rain.appendChild(a);
+  setTimeout(()=>a.remove(),12000);
+},500);
+</script>
+
+
+
+</body></html>
